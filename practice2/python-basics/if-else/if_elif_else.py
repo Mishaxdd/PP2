@@ -21,11 +21,11 @@ else:
 #3
 score = 85
 if score >= 90:
-    print("Grade: A")
+    print("A")
 elif score >= 70:
-    print("Grade: B")
+    print("B")
 else:
-    print("Grade: C")
+    print("C")
 #4
 num = -11
 if num > 0:

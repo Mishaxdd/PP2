@@ -17,5 +17,5 @@ if logg:
     print("Welcome back!")
 #5
 password = "qwerty123"
-if len(password) >= 8:
+if len(password)>= 8:
     print("Password length is strong")
