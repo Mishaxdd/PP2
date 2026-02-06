@@ -1,27 +1,22 @@
 #1
-i = 1
-while i < 6:
-  print(i)
-  i += 1
-#2
-num = 2
-while num <= 100:
-    print(num)
-    num *= 2
-#3
 i = 0
-while i <= 10:
+while True:
+    i += 1
     print(i)
-    i += 2
-#4
-a = 5
-sum = 0
-while a <=5:
-   sum+=a
-   a+=1
-print(sum)
-#5
-i = 5
-while i > 0:
+    if i == 5:
+        break  
+#2
+i = 1
+while i < 10:
+    if i == 5:
+        break 
     print(i)
-    i -= 1
+    i += 1
+#3
+total = 0
+i = 1
+while True:
+    total += i
+    if total > 50:
+        break
+    i += 1
