@@ -19,4 +19,10 @@ for b in a:
     if b < 0:
         continue
     print(b)
+#5
+points = [10, 0, 5, 0, 20]
+for p in points:
+    if p == 0:
+        continue 
+    print("point", p)
 

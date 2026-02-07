@@ -20,3 +20,20 @@ while True:
     if total > 50:
         break
     i += 1
+#4
+a = 10
+while a<120:
+    print("speed:", a)
+    if a == 70:
+        print("Finish")
+        break
+    a+=10
+#5
+import random
+
+while True:
+    a = random.randint(1, 10)
+    print(a)
+    if a < 3:
+        print("number less 3")
+        break
