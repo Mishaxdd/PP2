@@ -1,0 +1,2 @@
+def generetor(n):
+    yield 
