@@ -1,42 +1,50 @@
-class employee():
+class Employee:
     def __init__(self, name, base_salary):
         self.name = name
-        self.base_salary = int(base_salary)
-    def total_salary(self):
-        return self.base_salary
+        self.base_salary = base_salary
 
-class Manager(employee):
+    def total_salary(self):
+        return float(self.base_salary)
+
+class Manager(Employee):
     def __init__(self, name, base_salary, bonus_percent):
         super().__init__(name, base_salary)
         self.bonus_percent = bonus_percent
-    def total_salary(self):
-        return self.base_salary * (1+int(self.bonus_percent)/100)
 
-class Developer(employee):
+    def total_salary(self):
+        return self.base_salary * (1 + self.bonus_percent / 100)
+
+class Developer(Employee):
     def __init__(self, name, base_salary, completed_projects):
         super().__init__(name, base_salary)
         self.completed_projects = completed_projects
+
     def total_salary(self):
-        return self.base_salary +int(self.completed_projects)*500
+        return self.base_salary + (self.completed_projects * 500)
 
-class Intern(employee):
-    def __init__(self, name, base_salary):
-        super().__init__(name, base_salary)
+class Intern(Employee):
     def total_salary(self):
-        return super().total_salary()
+        return float(self.base_salary)
 
-data = list(map(str, input().split()))
+def main():
+    data = input().split()
+    if not data:
+        return
 
-def Output_data(obj):
-    salary = obj.total_salary()
-    print(f"Name: {data[1]}, Total: {salary:.2f}")
+    emp_type = data[0]
+    name = data[1]
+    base_salary = int(data[2])
 
-if data[0] == "Manager":
-    obj = Manager(data[1], data[2], data[3])
-    Output_data(obj)
-elif data[0] == "Developer":
-    obj = Developer(data[1], data[2], data[3])
-    Output_data(obj)
-elif data[0] == "Intern":
-    obj = Intern(data[1], data[2])
-    Output_data(obj)
+    if emp_type == "Manager":
+        bonus_percent = int(data[3])
+        employee = Manager(name, base_salary, bonus_percent)
+    elif emp_type == "Developer":
+        completed_projects = int(data[3])
+        employee = Developer(name, base_salary, completed_projects)
+    elif emp_type == "Intern":
+        employee = Intern(name, base_salary)
+    
+    print(f"Name: {employee.name}, Total: {employee.total_salary():.2f}")
+
+if __name__ == "__main__":
+    main()

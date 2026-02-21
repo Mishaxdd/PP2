@@ -1,28 +1,34 @@
-307
-import math
 
-class Point():
+import math
+class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
     def show(self):
         print(f"({self.x}, {self.y})")
+
     def move(self, new_x, new_y):
         self.x = new_x
         self.y = new_y
-        print(f"({self.x}, {self.y})")
-    def dist(self, other_point_x, other_point_y):
-        l =math.sqrt((other_point_x - self.x)**2 + (other_point_y- self.y)**2)
-        print(f"{l:.2f}")
 
+    def dist(self, other_point):
+        return math.sqrt((self.x - other_point.x) ** 2 + (self.y - other_point.y) ** 2)
 
-init_coord = list(map(int, input().split()))
-final_coord = list(map(int, input().split()))
-sec_coord = list(map(int, input().split()))
+def main():
+    x1, y1 = map(int, input().split())
+    x2, y2 = map(int, input().split())
+    x3, y3 = map(int, input().split())
 
+    p1 = Point(x1, y1)
+    p1.show()
 
-p1 = Point(init_coord[0], init_coord[1])
-p1.show()
-p1.move(final_coord[0], final_coord[1])
-p1.dist(sec_coord[0], sec_coord[1])
+    p1.move(x2, y2)
+    p1.show()
+
+    p2 = Point(x3, y3)
+    distance = p1.dist(p2)
+    print(f"{distance:.2f}")
+
+if __name__ == "__main__":
+    main()

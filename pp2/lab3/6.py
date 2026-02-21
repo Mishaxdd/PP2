@@ -1,4 +1,4 @@
-class Shape():
+class Shape:
     def area(self):
         return 0
 
@@ -12,9 +12,8 @@ class Rectangle(Shape):
 
 data = list(map(int, input().split()))
 
-l = data[0]
-w = data[1]
-
-
-s = Rectangle(l,w)
-print(s.area())
+if len(data) >= 2:
+    l = data[0]
+    w = data[1]
+    r = Rectangle(l, w)
+    print(r.area())

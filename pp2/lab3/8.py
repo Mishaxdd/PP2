@@ -1,16 +1,16 @@
-class Account():
-    def __init__(self, owner, balance):
-        self.owner = owner
+class Account:
+    def __init__(self, balance):
         self.balance = balance
-    def deposit(self):
-        pass
-    def withdraw(self, w_amount):
-        if self.balance >= w_amount:
-            print(self.balance - w_amount)
-        else:
+
+    def withdraw(self, amount):
+        if amount > self.balance:
             print("Insufficient Funds")
+        else:
+            self.balance -= amount
+            print(self.balance)
 
-data = list(map(int, input().split()))
 
-p1 = Account("Ryan Gosling", data[0])
-p1.withdraw(data[1])
+B, W = map(int, input().split())
+
+acc = Account(B)
+acc.withdraw(W)
