@@ -2,7 +2,7 @@ import psycopg2
 import csv
 from config import DB_HOST, DB_NAME, DB_USER, DB_PASSWORD
 
-# ---- Connection ----
+# connection
 def connect():
     return psycopg2.connect(
         host=DB_HOST,
@@ -11,7 +11,7 @@ def connect():
         password=DB_PASSWORD
     )
 
-# ---- Create Table ----
+# create table
 def create_table():
     conn = connect()
     with conn.cursor() as cur:
@@ -25,7 +25,7 @@ def create_table():
         conn.commit()
     conn.close()
 
-# ---- INSERT ----
+#insert
 def insert(name, phone):
     conn = connect()
     with conn.cursor() as cur:
@@ -52,7 +52,7 @@ def insert_csv(csv_file):
         try:
             with open(csv_file, "r") as f:
                 reader = csv.reader(f)
-                next(reader)  # skip header
+                next(reader)  
 
                 for row in reader:
                     if not row or len(row) < 2:
@@ -73,7 +73,7 @@ def insert_csv(csv_file):
             conn.rollback()
     conn.close()
 
-# ---- SELECT ----
+#select
 def select_all():
     conn = connect()
     with conn.cursor() as cur:
@@ -94,7 +94,7 @@ def search(pattern):
     conn.close()
     return data
 
-# ---- UPDATE ----
+#update
 def upd_phone(name, new_phone):
     conn = connect()
     with conn.cursor() as cur:
@@ -125,7 +125,7 @@ def upd_name(phone, new_name):
             conn.rollback()
     conn.close()
 
-# ---- DELETE ----
+#delete
 def d_name(name):
     conn = connect()
     with conn.cursor() as cur:
@@ -142,7 +142,7 @@ def d_phone(phone):
         print(f"Deleted {cur.rowcount} row(s)")
     conn.close()
 
-# ---- PRINT ----
+# print
 def print_contacts(contacts):
     if not contacts:
         print("No contacts found")
@@ -152,7 +152,7 @@ def print_contacts(contacts):
     for c in contacts:
         print(f"[{c[0]}] {c[1]} - {c[2]}")
 
-# ---- MENU ----
+#menu
 def main():
     create_table()
 
