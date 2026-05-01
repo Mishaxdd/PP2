@@ -1,7 +1,4 @@
--- procedures.sql
--- New stored procedures for TSIS 1
 
--- Add a phone number to an existing contact
 CREATE OR REPLACE PROCEDURE add_phone(
     p_contact_name VARCHAR,
     p_phone        VARCHAR,
@@ -19,7 +16,7 @@ BEGIN
 END;
 $$;
 
--- Move a contact to a group (creates group if it doesn't exist)
+
 CREATE OR REPLACE PROCEDURE move_to_group(
     p_contact_name VARCHAR,
     p_group_name   VARCHAR
@@ -43,7 +40,7 @@ BEGIN
 END;
 $$;
 
--- Search contacts by name, email, or any phone number
+
 CREATE OR REPLACE FUNCTION search_contacts(p_query TEXT)
 RETURNS TABLE (
     username  VARCHAR,
@@ -72,7 +69,7 @@ BEGIN
 END;
 $$;
 
--- Paginated contacts (reused from Practice 8 style)
+
 CREATE OR REPLACE FUNCTION get_contacts_page(p_limit INT, p_offset INT)
 RETURNS TABLE (
     username VARCHAR,
